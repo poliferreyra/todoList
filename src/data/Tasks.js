@@ -1,7 +1,7 @@
 export const Tasks = [
     {
       id: 1,
-      title: 'Buy a new gaming laptop',
+      title: 'Buy a new laptop',
       done: false,
     },
     {

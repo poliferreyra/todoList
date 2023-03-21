@@ -6,9 +6,10 @@ import { AiOutlineCheckSquare } from "react-icons/ai";
 export const Todo = ({todo}) => {
   return (
     <Box>
-      <Text display="flex" gap={2} boxShadow="xs" pl={2}rounded='md' bg="#C6EE56" alignItems="center" w="350px" mb={2}>
+      <Text display="flex" gap={2} boxShadow="xs" pl={2}rounded='md' bg="#F6ED31" justifyContent="space-between" alignItems="center" w="350px" mb={1}>
         {todo.title}
-        <Button
+        <Box>
+          <Button
           rightIcon={<AiOutlineCheckSquare/>}
           size="md"
           variant="ghost"
@@ -21,6 +22,7 @@ export const Todo = ({todo}) => {
           variant="ghost"
           color="red"
         ></Button>
+        </Box>
       </Text>
     </Box>
   );
