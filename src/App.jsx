@@ -5,9 +5,11 @@ import imgBg from "./assets/imgBg.jpg";
 import { Header } from "./components/Header";
 import { TodoList } from "./components/TodoList";
 
+
 function App() {
+  const initialTaskList = JSON.parse(localStorage.getItem("taskList")) || []
   const [value, setValue] = useState("");
-  const [task, setTask] = useState([])
+  const [taskList, setTaskList] = useState(initialTaskList)
  
   return (
     <Flex justifyContent="center">
@@ -21,9 +23,9 @@ function App() {
         bgSize="cover"
       >
         <VStack>
-          <Box bg="#EEEEEE" w={400}>
-            <Header value={value} setValue={setValue} task={task} setTask={setTask} />
-            <TodoList task={task}/>
+          <Box bg="#FEEF3B" w={400}>
+            <Header value={value} setValue={setValue} taskList={taskList} setTaskList={setTaskList} />
+            <TodoList taskList={taskList}/>
           </Box>
         </VStack>
       </Box>

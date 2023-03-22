@@ -1,17 +1,17 @@
-import { Box, Text, Button } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiOutlineCheckSquare } from "react-icons/ai";
 
 export const Todo = ({ todo }) => {
   return (
     <Box>
-      <Text
+      <Box
         display="flex"
         gap={2}
         boxShadow="xs"
         pl={2}
         rounded="md"
-        bg="#F6ED31"
+        bg="#C4ED5C"
         justifyContent="space-between"
         alignItems="center"
         w="350px"
@@ -32,7 +32,7 @@ export const Todo = ({ todo }) => {
             color="red"
           ></Button>
         </Box>
-      </Text>
+      </Box>
     </Box>
   );
 };
