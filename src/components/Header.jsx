@@ -1,7 +1,23 @@
-import { Box, Heading, Grid, GridItem, InputGroup, InputRightElement, Button, Input, Select } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Grid,
+  GridItem,
+  InputGroup,
+  InputRightElement,
+  Button,
+  Input,
+  Select,
+} from "@chakra-ui/react";
 import { SiAddthis } from "react-icons/si";
 
-export const Header = () => {
+export const Header = ({ value, setValue, task, setTask }) => {
+  const handleInputValue = (e) => setValue(e.target.value);
+
+  const addTodo = () => {
+    setTask([...task, {title: value, done:false}])
+  };
+
   return (
     <Box>
       <Heading as="h3" size="lg" color="#AED9E0" textAlign="left" ml={3} mt="5">
@@ -12,10 +28,20 @@ export const Header = () => {
           <InputGroup>
             <InputRightElement
               children={
-                <Button rightIcon={<SiAddthis />} color="#FDD216" bg="white" />
+                <Button
+                  rightIcon={<SiAddthis />}
+                  color="#FDD216"
+                  bg="white"
+                  onClick={addTodo}
+                />
               }
             />
-            <Input type="text" placeholder="Type your new task" />
+            <Input
+              type="text"
+              value={value}
+              placeholder="Type your new task"
+              onChange={handleInputValue}
+            />
           </InputGroup>
         </GridItem>
 
