@@ -25,7 +25,7 @@ function App() {
         <VStack>
           <Box bg="#FEEF3B" w={400}>
             <Header value={value} setValue={setValue} taskList={taskList} setTaskList={setTaskList} />
-            <TodoList taskList={taskList}/>
+            <TodoList taskList={taskList} setTaskList={setTaskList}/>
           </Box>
         </VStack>
       </Box>

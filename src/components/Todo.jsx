@@ -1,8 +1,16 @@
 import { Box, Button } from "@chakra-ui/react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiOutlineCheckSquare } from "react-icons/ai";
+import { setLocalStorage } from "../utils/localStorage";
 
-export const Todo = ({ todo }) => {
+export const Todo = ({ todo, setTaskList, taskList }) => {
+  const deleteTask =(id)=>{
+  const newTasks = [...taskList].filter((task)=> task.id != id)
+  setTaskList(newTasks)
+  setLocalStorage("taskList", newTasks )
+ 
+}
+
   return (
     <Box>
       <Box
@@ -30,6 +38,9 @@ export const Todo = ({ todo }) => {
             size="md"
             variant="ghost"
             color="red"
+            onClick={()=>{
+              deleteTask(todo.id)
+            }}
           ></Button>
         </Box>
       </Box>
