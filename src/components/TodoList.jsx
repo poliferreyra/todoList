@@ -7,7 +7,7 @@ export const TodoList = ({taskList, setTaskList}) => {
     <Stack justifyContent="center" spacing={4} align="center" mt={4} mb={4}>
       {taskList.map((todo) => (
         <Todo key={todo.id} todo={todo} setTaskList={setTaskList} taskList={taskList} />
-        // el todo me trae todo mi OBJETO (title:"xx", id:"xx", done:false) cada vez que itero en mi array TASKLIST
+        // el TODO me trae todo mi OBJETO (title:"xx", id:"xx", done:false) cada vez que itero en mi array TASKLIST
       ))}
     </Stack>
   );

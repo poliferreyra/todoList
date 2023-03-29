@@ -5,12 +5,12 @@ import imgBg from "./assets/imgBg.jpg";
 import { Header } from "./components/Header";
 import { TodoList } from "./components/TodoList";
 
-
 function App() {
-  const initialTaskList = JSON.parse(localStorage.getItem("taskList")) || []
+  const initialTaskList = JSON.parse(localStorage.getItem("taskList")) || [];
   const [value, setValue] = useState("");
-  const [taskList, setTaskList] = useState(initialTaskList)
- 
+  const [taskList, setTaskList] = useState(initialTaskList);
+  // const [filter, setFilter] = useState();
+
   return (
     <Flex justifyContent="center">
       <Box
@@ -24,8 +24,15 @@ function App() {
       >
         <VStack>
           <Box bg="#FEEF3B" w={400}>
-            <Header value={value} setValue={setValue} taskList={taskList} setTaskList={setTaskList} />
-            <TodoList taskList={taskList} setTaskList={setTaskList}/>
+            <Header
+              value={value}
+              setValue={setValue}
+              taskList={taskList}
+              setTaskList={setTaskList}
+              // filter={filter}
+              // setFilter={setFilter}
+            />
+            <TodoList taskList={taskList} setTaskList={setTaskList} />
           </Box>
         </VStack>
       </Box>

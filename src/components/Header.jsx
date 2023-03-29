@@ -12,7 +12,14 @@ import {
 import { SiAddthis } from "react-icons/si";
 import { setLocalStorage } from "../utils/localStorage";
 
-export const Header = ({ value, setValue, taskList, setTaskList }) => {
+export const Header = ({
+  value,
+  setValue,
+  taskList,
+  setTaskList,
+  // filter,
+  // setFilter,
+}) => {
   const handleInputValue = (e) => setValue(e.target.value);
 
   const addTodo = (e) => {
@@ -27,6 +34,23 @@ export const Header = ({ value, setValue, taskList, setTaskList }) => {
     setValue("");
   };
 
+  const handleFilter = (e) => {
+    const filterValue = e.target.value;
+    const taskLocalStorage = JSON.parse(localStorage.getItem("taskList"));
+
+    if (filterValue === "completed") {
+      const completed = taskLocalStorage.filter((task) => task.done);
+      setTaskList(completed);
+    }
+    if (filterValue === "pending") {
+      const pending = taskLocalStorage.filter((task) => !task.done);
+      setTaskList(pending);
+    }
+    if (filterValue === "all") {
+       setTaskList(taskLocalStorage);
+    }
+  
+  };
   return (
     <Box>
       <Heading as="h3" size="lg" color="#FFFFFF" textAlign="left" ml={3} mt="5">
@@ -49,17 +73,20 @@ export const Header = ({ value, setValue, taskList, setTaskList }) => {
               <Input
                 type="text"
                 value={value}
-                placeholder="Type your new task"
+                placeholder="Type new task"
                 onChange={handleInputValue}
               />
             </InputGroup>
           </GridItem>
 
           <GridItem colStart={4} colEnd={6} h="10" bg="white" mt={3}>
-            <Select>
-              <option>Select your option...</option>
+            <Select
+              // placeholder="Filter option"
+              onChange={handleFilter}
+            >
+              <option>Select filter...</option>
               <option value="all">All</option>
-              <option value="complete">Complete</option>
+              <option value="completed">Completed</option>
               <option value="pending">Pending</option>
             </Select>
           </GridItem>

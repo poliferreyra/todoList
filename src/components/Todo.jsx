@@ -14,13 +14,13 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
     const check = [...taskList];
     check.filter((task) => {
       if (task.id === id) {
-        task.done = true;
+        task.done = !task.done;
+        // asi hace el toggle
       }
       setTaskList(check);
       setLocalStorage("taskList", check);
     });
   };
-
   return (
     <Box>
       <Box
