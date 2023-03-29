@@ -12,18 +12,16 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
+
 } from "@chakra-ui/react";
 import { SiAddthis } from "react-icons/si";
 import { setLocalStorage } from "../utils/localStorage";
-import { AlertDialogExample } from "./AlertDialog";
 
 export const Header = ({
   value,
   setValue,
   taskList,
   setTaskList,
-  // filter,
-  // setFilter,
 }) => {
   const handleInputValue = (e) => {
     setValue(e.target.value);
@@ -99,7 +97,6 @@ export const Header = ({
 
           <GridItem colStart={4} colEnd={6} h="10" bg="white" mt={3}>
             <Select
-              // placeholder="Filter option"
               onChange={handleFilter}
             >
               <option>Select filter...</option>
@@ -110,7 +107,6 @@ export const Header = ({
           </GridItem>
         </Grid>
       </Box>
-      <AlertDialogExample/>
     </Box>
   );
 };

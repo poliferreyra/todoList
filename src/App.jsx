@@ -9,7 +9,6 @@ function App() {
   const initialTaskList = JSON.parse(localStorage.getItem("taskList")) || [];
   const [value, setValue] = useState("");
   const [taskList, setTaskList] = useState(initialTaskList);
-  // const [filter, setFilter] = useState();
 
   return (
     <Flex justifyContent="center">
@@ -29,8 +28,6 @@ function App() {
               setValue={setValue}
               taskList={taskList}
               setTaskList={setTaskList}
-              // filter={filter}
-              // setFilter={setFilter}
             />
             <TodoList taskList={taskList} setTaskList={setTaskList} />
           </Box>
