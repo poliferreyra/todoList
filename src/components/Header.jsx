@@ -8,9 +8,14 @@ import {
   Button,
   Input,
   Select,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 } from "@chakra-ui/react";
 import { SiAddthis } from "react-icons/si";
 import { setLocalStorage } from "../utils/localStorage";
+import { AlertDialogExample } from "./AlertDialog";
 
 export const Header = ({
   value,
@@ -20,18 +25,32 @@ export const Header = ({
   // filter,
   // setFilter,
 }) => {
-  const handleInputValue = (e) => setValue(e.target.value);
+  const handleInputValue = (e) => {
+    setValue(e.target.value);
+  };
 
   const addTodo = (e) => {
     e.preventDefault();
-    const newTask = [
-      ...taskList,
-      { title: value, done: false, id: self.crypto.randomUUID() },
-    ];
-    setTaskList(newTask);
-    // me importo la funcion (utils/localStorage.js) y le paso los argumentos (key, data)
-    setLocalStorage("taskList", newTask);
-    setValue("");
+    if (value.length < 5) {
+      alert("You must type 5 characters");
+      // <Alert status="error">
+      //   <AlertIcon />
+      //   <AlertTitle>Your browser is outdated!</AlertTitle>
+      //   <AlertDescription>
+      //     Your Chakra experience may be degraded.
+      //   </AlertDescription>
+      // </Alert>;
+    } else {
+      const newTask = [
+        ...taskList,
+        { title: value, done: false, id: self.crypto.randomUUID() },
+      ];
+
+      setTaskList(newTask);
+      setLocalStorage("taskList", newTask);
+      // me importo la funcion (utils/localStorage.js) y le paso los argumentos (key, data)
+      setValue("");
+    }
   };
 
   const handleFilter = (e) => {
@@ -47,9 +66,8 @@ export const Header = ({
       setTaskList(pending);
     }
     if (filterValue === "all") {
-       setTaskList(taskLocalStorage);
+      setTaskList(taskLocalStorage);
     }
-  
   };
   return (
     <Box>
@@ -92,6 +110,7 @@ export const Header = ({
           </GridItem>
         </Grid>
       </Box>
+      <AlertDialogExample/>
     </Box>
   );
 };

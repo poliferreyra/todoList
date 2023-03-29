@@ -52,6 +52,7 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
             variant="ghost"
             color="red"
             onClick={() => {
+              
               deleteTask(todo.id);
             }}
           ></Button>
