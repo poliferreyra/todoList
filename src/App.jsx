@@ -19,10 +19,10 @@ function App() {
         bgImage={`url(${imgBg})`}
         bgPosition="center"
         bgRepeat="no-repeat"
-        bgSize="cover"
+        bgSize={{base:"none", sm:"cover"}}
       >
         <VStack>
-          <Box bg="#FEEF3B" w={400}>
+          <Box bg="#FEEF3B" w="400px">
             <Header
               value={value}
               setValue={setValue}
@@ -33,6 +33,7 @@ function App() {
           </Box>
         </VStack>
       </Box>
+
     </Flex>
   );
 }
