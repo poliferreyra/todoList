@@ -40,7 +40,7 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
 
   return (
     <>
-      <Box>
+      <Box w={{ base: "90%", sm: "90%", md: "80%" }}>
         <Box
           display="flex"
           gap={2}
@@ -50,14 +50,15 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
           bg="#C4ED5C"
           justifyContent="space-between"
           alignItems="center"
-          w="350px"
+          maxHeight="40px"
           mb={1}
+          fontSize={{ base: "13px", sm: "15px", md: "15px" }}
         >
           <Text as={todo.done && "s"}>{todo.title}</Text>
           <Box>
             <Button
               rightIcon={<AiOutlineCheckSquare />}
-              size="md"
+              size={{ base: "sm", sm: "md" }}
               variant="ghost"
               color="green"
               onClick={() => {
@@ -67,7 +68,7 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
 
             <Button
               rightIcon={<RiDeleteBin6Line />}
-              size="md"
+              size={{ base: "sm", sm: "md" }}
               variant="ghost"
               color="red"
               onClick={onOpen}
@@ -79,21 +80,26 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
               onClose={onClose}
             >
               <AlertDialogOverlay>
-                <AlertDialogContent>
-                  <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                <AlertDialogContent w={{ base: "60%" }}>
+                  <AlertDialogHeader fontSize="sm" fontWeight="bold">
                     Delete Task
                   </AlertDialogHeader>
 
-                  <AlertDialogBody>
+                  <AlertDialogBody fontSize="sm">
                     Are you sure? You can't undo this action afterwards.
                   </AlertDialogBody>
 
                   <AlertDialogFooter>
-                    <Button ref={cancelRef} onClick={onClose}>
+                    <Button
+                      ref={cancelRef}
+                      onClick={onClose}
+                      size={{ base: "sm", sm: "md" }}
+                    >
                       Cancel
                     </Button>
                     <Button
                       colorScheme="red"
+                      size={{ base: "sm", sm: "md" }}
                       onClick={() => {
                         deleteTask(todo.id);
                       }}

@@ -14,15 +14,15 @@ function App() {
     <Flex justifyContent="center">
       <Box
         w="100%"
-        h="100vh"
-        p={20}
+        h="100%"
+        p={10}
         bgImage={`url(${imgBg})`}
-        bgPosition="center"
+        bgPosition={{base:"bottom 50px",md:"center"}}
         bgRepeat="no-repeat"
-        bgSize={{base:"none", sm:"cover"}}
+        bgSize={{base:"cover", sm:"none", md:"cover"}}
       >
         <VStack>
-          <Box bg="#FEEF3B" w="400px">
+          <Box  bg="rgba(255, 255, 255, 0.3)" w={{base:"100%", sm:"90%", md:"60%", lg:"50%", xl:"40%" }}>
             <Header
               value={value}
               setValue={setValue}

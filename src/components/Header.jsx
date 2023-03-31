@@ -28,7 +28,7 @@ export const Header = ({ value, setValue, taskList, setTaskList }) => {
     e.preventDefault();
     if (value.length < 5) {
       setError(true);
-      return
+      return;
     } else {
       const newTask = [
         ...taskList,
@@ -63,31 +63,48 @@ export const Header = ({ value, setValue, taskList, setTaskList }) => {
       <Heading as="h3" size="lg" color="#FFFFFF" textAlign="left" ml={3} mt="5">
         To-Do App
       </Heading>
-      <Box as="form" onSubmit={addTodo} >
-        <Grid templateColumns={{base:"1fr", sm:"repeat(2, 1fr)"}} gap={1} m={2} p={3}>
-          <GridItem  h="10" bg="white" mt={3}>
-            <InputGroup >
+      <Box as="form" onSubmit={addTodo}>
+        <Grid
+          templateColumns={{
+            base: "1fr",
+            sm: "1fr",
+            md: "repeat(2, 1fr)",
+          }}
+          gap={1}
+          m={2}
+          p={3}
+        >
+          <GridItem h="10" bg="white" mt={3} maxHeight="35px">
+            <InputGroup>
               <InputRightElement
+                maxHeight="35px"
                 children={
                   <Button
-                  rightIcon={<SiAddthis />}
-                  color="#FDD216"
-                  bg="white"
-                  type="submit"
+                    maxHeight="35px"
+                    rightIcon={<SiAddthis />}
+                    color="#FDD216"
+                    bg="white"
+                    type="submit"
                   />
                 }
-                />
+              />
               <Input
+                maxHeight="35px"
+                fontSize={{ base: "13px", sm: "15px", md: "15px" }}
                 type="text"
                 value={value}
                 placeholder="Type new task"
                 onChange={handleInputValue}
-                />
+              />
             </InputGroup>
           </GridItem>
 
-          <GridItem h="10" bg="white" mt={3}>
-            <Select onChange={handleFilter}>
+          <GridItem h="10" bg="white" mt={3} height="35px">
+            <Select
+              height="35px"
+              onChange={handleFilter}
+              fontSize={{ base: "13px", sm: "15px", md: "15px" }}
+            >
               <option>Select filter...</option>
               <option value="all">All</option>
               <option value="completed">Completed</option>
@@ -95,12 +112,18 @@ export const Header = ({ value, setValue, taskList, setTaskList }) => {
             </Select>
           </GridItem>
         </Grid>
-                {error && (
-                  <Alert bg="rgba(255, 255, 255, 0.3)" status="warning" mt={3} p={3}>
-                    <AlertIcon />
-                    <AlertTitle>An error was detected. Try again</AlertTitle>
-                    </Alert>
-                )}
+        {error && (
+          <Alert
+            bg="rgba(255, 255, 255, 0.3)"
+            status="warning"
+            mt={3}
+            p={3}
+            fontSize={{ base: "13px", sm: "15px", md: "15px" }}
+          >
+            <AlertIcon />
+            <AlertTitle>An error was detected</AlertTitle>
+          </Alert>
+        )}
       </Box>
     </Box>
   );
