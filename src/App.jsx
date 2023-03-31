@@ -14,7 +14,7 @@ function App() {
     <Flex justifyContent="center">
       <Box
         w="100%"
-        h="100%"
+        h="100vh"
         p={10}
         bgImage={`url(${imgBg})`}
         bgPosition={{base:"bottom 50px",md:"center"}}
