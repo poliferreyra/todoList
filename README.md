@@ -4,10 +4,11 @@ Podes agregar tareas y una vez realizadas podrás  marcarlas como completas ✅ 
 
 Este proyecto esta realizado en *React*  y [Chakra UI](https://chakra-ui.com/ "Chakra UI")
 
-![Agrega tus tareas](./assets/R1.png)
-![Marcá las completas](./assets/R2.png)
-![Filtrá como necesites](./assets/R3.png)
-![Borrá cuando quieras](./assets/R4.png)
 
-Hacé click acá 👇📲 y comenzá a administrar tus tareas facilmente 
+![Agrega tus tareas](./src/assets/R1.png) ![Marcá las completas](./src/assets/R2.png)
+
+![Filtrá como necesites](./src/assets/R3.png) ![Borrá cuando quieras](./src/assets/R4.png)
+
+Hacé click acá 👇 y comenzá a administrar tus tareas facilmente 
+
 https://todo-list-black-theta.vercel.app/
