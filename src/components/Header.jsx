@@ -61,7 +61,7 @@ export const Header = ({ value, setValue, taskList, setTaskList }) => {
   return (
     <Box>
       <Heading as="h3" size="lg" color="#FFFFFF" textAlign="left" ml={3} mt="5">
-        To-Do App
+        ToDo List
       </Heading>
       <Box as="form" onSubmit={addTodo}>
         <Grid
