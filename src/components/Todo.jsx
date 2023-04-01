@@ -86,7 +86,8 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
                   </AlertDialogHeader>
 
                   <AlertDialogBody fontSize="sm">
-                    Are you sure? You can't undo this action afterwards.
+                    Are you sure do you want to Delete
+                    <strong>{`  "${todo.title}"`}</strong>
                   </AlertDialogBody>
 
                   <AlertDialogFooter>
