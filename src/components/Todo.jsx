@@ -9,6 +9,13 @@ import {
   AlertDialogOverlay,
   useDisclosure,
   Text,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
 } from "@chakra-ui/react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiOutlineCheckSquare } from "react-icons/ai";
@@ -16,12 +23,12 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { setLocalStorage } from "../utils/localStorage";
 
 import React, { useState } from "react";
-import { ModalEdit } from "./ModalEdit";
 
 export const Todo = ({ todo, setTaskList, taskList }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
-  const [edit, setEdit] = useState(false);
+
+  const [editTask, setEditTask] = useState(false);
 
   const deleteTask = (id) => {
     const newTasks = [...taskList].filter((task) => task.id !== id);
@@ -64,7 +71,11 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
               size={{ base: "sm", sm: "md" }}
               variant="ghost"
               color="black"
-              onClick={onOpen}
+              onClick={() => {
+                setEditTask(true);
+                onOpen();
+                        
+              }}
             ></Button>
 
             <Button
@@ -82,7 +93,11 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
               size={{ base: "sm", sm: "md" }}
               variant="ghost"
               color="red"
-              onClick={onOpen}
+              onClick={() => {
+                setEditTask(false);
+                onOpen();
+                        
+              }}
             ></Button>
 
             {/* Delete Alert */}
@@ -127,7 +142,27 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
         </Box>
       </Box>
       {/* edit Modal */}
-      {edit && <ModalEdit />}
+      {editTask && (
+        <Modal isOpen={editTask ? isOpen : onClose} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Modal Title</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Distinctio at vitae excepturi esse ipsam aliquid, beatae
+              dignissimos, sint, est
+            </ModalBody>
+
+            <ModalFooter>
+              <Button colorScheme="blue" mr={3} onClick={onClose}>
+                Close
+              </Button>
+              <Button variant="ghost">Secondary Action</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      )}
     </>
   );
 };
