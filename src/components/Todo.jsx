@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Text,
   AlertDialog,
   AlertDialogBody,
   AlertDialogContent,
@@ -9,16 +8,20 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   useDisclosure,
+  Text,
 } from "@chakra-ui/react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiOutlineCheckSquare } from "react-icons/ai";
+import { AiOutlineEdit } from "react-icons/ai";
 import { setLocalStorage } from "../utils/localStorage";
 
-import React from "react";
+import React, { useState } from "react";
+import { ModalEdit } from "./ModalEdit";
 
 export const Todo = ({ todo, setTaskList, taskList }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
+  const [edit, setEdit] = useState(false);
 
   const deleteTask = (id) => {
     const newTasks = [...taskList].filter((task) => task.id !== id);
@@ -57,6 +60,14 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
           <Text as={todo.done && "s"}>{todo.title}</Text>
           <Box>
             <Button
+              rightIcon={<AiOutlineEdit />}
+              size={{ base: "sm", sm: "md" }}
+              variant="ghost"
+              color="black"
+              onClick={onOpen}
+            ></Button>
+
+            <Button
               rightIcon={<AiOutlineCheckSquare />}
               size={{ base: "sm", sm: "md" }}
               variant="ghost"
@@ -74,6 +85,7 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
               onClick={onOpen}
             ></Button>
 
+            {/* Delete Alert */}
             <AlertDialog
               isOpen={isOpen}
               leastDestructiveRef={cancelRef}
@@ -114,6 +126,8 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
           </Box>
         </Box>
       </Box>
+      {/* edit Modal */}
+      {edit && <ModalEdit />}
     </>
   );
 };

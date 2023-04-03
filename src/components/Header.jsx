@@ -12,6 +12,7 @@ import {
   AlertIcon,
   AlertTitle,
 } from "@chakra-ui/react";
+
 import { useState } from "react";
 import { SiAddthis } from "react-icons/si";
 import { setLocalStorage } from "../utils/localStorage";

@@ -33,8 +33,7 @@ function App() {
           </Box>
         </VStack>
       </Box>
-
-    </Flex>
+     </Flex>
   );
 }
 
