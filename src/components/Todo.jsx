@@ -16,14 +16,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  ButtonGroup,
-  IconButton,
-  useEditableControls,
-  Editable,
-  EditablePreview,
   Input,
-  EditableInput,
-  CheckboxIcon,
 } from "@chakra-ui/react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiOutlineCheckSquare } from "react-icons/ai";
@@ -37,23 +30,42 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
   const cancelRef = React.useRef();
 
   const [editTask, setEditTask] = useState(false);
+  const [editValue, setEditValue] = useState("");
 
-  const deleteTask = (id) => {
-    const newTasks = [...taskList].filter((task) => task.id !== id);
-    setTaskList(newTasks);
-    setLocalStorage("taskList", newTasks);
+  const handleEditValue = (e) => {
+    setEditValue(e.target.value);
+  };
+
+  const editingTask = (id) => {
+    const editedTask = [...taskList];
+    editedTask.map((task) => {
+      if (task.id === id) {
+        task.title = editValue;
+      }
+      return task;
+    });
+
+    setTaskList(editedTask);
+    setLocalStorage("taskList", editedTask);
+    onClose();
   };
 
   const checkTask = (id) => {
     const check = [...taskList];
     check.filter((task) => {
       if (task.id === id) {
+        // toggle
         task.done = !task.done;
-        // asi hace el toggle
       }
       setTaskList(check);
       setLocalStorage("taskList", check);
     });
+  };
+
+  const deleteTask = (id) => {
+    const newTasks = [...taskList].filter((task) => task.id !== id);
+    setTaskList(newTasks);
+    setLocalStorage("taskList", newTasks);
   };
 
   return (
@@ -110,7 +122,10 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
             <AlertDialog
               isOpen={isOpen}
               leastDestructiveRef={cancelRef}
-              onClose={onClose}
+              onClose={()=>{
+                onClose()
+                setEditTask(false)
+              }}
             >
               <AlertDialogOverlay>
                 <AlertDialogContent w={{ base: "60%" }}>
@@ -149,27 +164,31 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
       </Box>
       {/* edit Modal */}
       {editTask && (
-        <Modal isOpen={editTask ? isOpen : onClose} onClose={onClose}>
+        <Modal isOpen={editTask ? isOpen : onClose} onClose={onClose} >
           <ModalOverlay />
-          <ModalContent>
+          <ModalContent w={{ base: "60%" }}>
             <ModalHeader>Task Edit</ModalHeader>
-            <ModalCloseButton />
+
             <ModalBody>
-            <Input focusBorderColor='#C4ED5C' value={todo.title} />
+              <Input
+                focusBorderColor="#C4ED5C"
+                defaultValue={todo.title}
+                onChange={handleEditValue}
+              />
             </ModalBody>
 
             <ModalFooter>
-              <Button
-                mr={3}
-                size={{ base: "sm", sm: "md" }}
-                onClick={onClose}
-              >
+              <Button mr={3} size={{ base: "sm", sm: "md" }} onClick={onClose}>
                 Close
               </Button>
               <Button
                 bg="#C4ED5C"
                 size={{ base: "sm", sm: "md" }}
                 variant="ghost"
+                _hover={{ bg: "#cef768" }}
+                onClick={() => {
+                  editingTask(todo.id);
+                }}
               >
                 Edit
               </Button>
