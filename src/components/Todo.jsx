@@ -16,6 +16,14 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  ButtonGroup,
+  IconButton,
+  useEditableControls,
+  Editable,
+  EditablePreview,
+  Input,
+  EditableInput,
+  CheckboxIcon,
 } from "@chakra-ui/react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiOutlineCheckSquare } from "react-icons/ai";
@@ -74,7 +82,6 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
               onClick={() => {
                 setEditTask(true);
                 onOpen();
-                        
               }}
             ></Button>
 
@@ -96,7 +103,6 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
               onClick={() => {
                 setEditTask(false);
                 onOpen();
-                        
               }}
             ></Button>
 
@@ -146,19 +152,27 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
         <Modal isOpen={editTask ? isOpen : onClose} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
+            <ModalHeader>Task Edit</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio at vitae excepturi esse ipsam aliquid, beatae
-              dignissimos, sint, est
+            <Input focusBorderColor='#C4ED5C' value={todo.title} />
             </ModalBody>
 
             <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
+              <Button
+                mr={3}
+                size={{ base: "sm", sm: "md" }}
+                onClick={onClose}
+              >
                 Close
               </Button>
-              <Button variant="ghost">Secondary Action</Button>
+              <Button
+                bg="#C4ED5C"
+                size={{ base: "sm", sm: "md" }}
+                variant="ghost"
+              >
+                Edit
+              </Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
