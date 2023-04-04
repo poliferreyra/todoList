@@ -85,7 +85,7 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
           fontSize={{ base: "13px", sm: "15px", md: "15px" }}
         >
           <Text as={todo.done && "s"}>{todo.title}</Text>
-          <Box>
+          <Box display={{base:"flex"}}flexWrap={{base:"flexWrap"}}>
             <Button
               rightIcon={<AiOutlineEdit />}
               size={{ base: "sm", sm: "md" }}
@@ -134,7 +134,8 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
                   </AlertDialogHeader>
 
                   <AlertDialogBody fontSize="sm">
-                    Are you sure? You can't undo this action afterwards.
+                  Are you sure do you want to Delete
+                    <strong>{`  "${todo.title}"`}</strong>
                   </AlertDialogBody>
 
                   <AlertDialogFooter>
@@ -179,7 +180,7 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
 
             <ModalFooter>
               <Button mr={3} size={{ base: "sm", sm: "md" }} onClick={onClose}>
-                Close
+                Cancel
               </Button>
               <Button
                 bg="#C4ED5C"
