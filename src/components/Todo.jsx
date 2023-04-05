@@ -11,7 +11,6 @@ import {
   Text,
   Modal,
   ModalBody,
-  ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHeader,
@@ -85,7 +84,7 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
           fontSize={{ base: "13px", sm: "15px", md: "15px" }}
         >
           <Text as={todo.done && "s"}>{todo.title}</Text>
-          <Box display={{base:"flex"}}flexWrap={{base:"flexWrap"}}>
+          <Box display={{ base: "flex" }} flexWrap={{ base: "flexWrap" }}>
             <Button
               rightIcon={<AiOutlineEdit />}
               size={{ base: "sm", sm: "md" }}
@@ -122,9 +121,9 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
             <AlertDialog
               isOpen={isOpen}
               leastDestructiveRef={cancelRef}
-              onClose={()=>{
-                onClose()
-                setEditTask(false)
+              onClose={() => {
+                onClose();
+                setEditTask(false);
               }}
             >
               <AlertDialogOverlay>
@@ -134,7 +133,7 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
                   </AlertDialogHeader>
 
                   <AlertDialogBody fontSize="sm">
-                  Are you sure do you want to Delete
+                    Are you sure do you want to Delete
                     <strong>{`  "${todo.title}"`}</strong>
                   </AlertDialogBody>
 
@@ -165,7 +164,7 @@ export const Todo = ({ todo, setTaskList, taskList }) => {
       </Box>
       {/* edit Modal */}
       {editTask && (
-        <Modal isOpen={editTask ? isOpen : onClose} onClose={onClose} >
+        <Modal isOpen={editTask ? isOpen : onClose} onClose={onClose}>
           <ModalOverlay />
           <ModalContent w={{ base: "60%" }}>
             <ModalHeader>Task Edit</ModalHeader>

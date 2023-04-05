@@ -5,9 +5,11 @@ Podes agregar tareas y una vez realizadas podrás  marcarlas como completas ✅ 
 Este proyecto esta realizado en *React*  y [Chakra UI](https://chakra-ui.com/ "Chakra UI")
 
 
-![Agrega tus tareas](./src/assets/R1.png) ![Marcá las completas](./src/assets/R2.png)
+![Agregar](./src/assets/R1.png) ![Error](./src/assets/R2.png)
 
-![Filtrá como necesites](./src/assets/R3.png) ![Borrá cuando quieras](./src/assets/R4.png)
+![Editar](./src/assets/R3.png) ![Check](./src/assets/R4.png)
+
+![Filtrar](./src/assets/R5.png) ![Borrar](./src/assets/R6.png)
 
 Hacé click acá 👇 y comenzá a administrar tus tareas facilmente 
 
