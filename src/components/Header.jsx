@@ -12,6 +12,7 @@ import {
   AlertIcon,
   AlertTitle,
 } from "@chakra-ui/react";
+
 import { useState } from "react";
 import { SiAddthis } from "react-icons/si";
 import { setLocalStorage } from "../utils/localStorage";
@@ -121,7 +122,7 @@ export const Header = ({ value, setValue, taskList, setTaskList }) => {
             fontSize={{ base: "13px", sm: "15px", md: "15px" }}
           >
             <AlertIcon />
-            <AlertTitle>An error was detected</AlertTitle>
+            <AlertTitle>Please type at least 5 letters</AlertTitle>
           </Alert>
         )}
       </Box>
